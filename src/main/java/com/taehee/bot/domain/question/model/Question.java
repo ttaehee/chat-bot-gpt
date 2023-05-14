@@ -1,6 +1,6 @@
-package com.example.bot.domain;
+package com.taehee.bot.domain.question.model;
 
-import com.example.bot.global.audit.BaseTimeEntity;
+import com.taehee.bot.global.audit.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

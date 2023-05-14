@@ -1,4 +1,4 @@
-package com.example.bot.global.config;
+package com.taehee.bot.global.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.EnableFeignClients;

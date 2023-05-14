@@ -1,4 +1,4 @@
-package com.example.bot.global.config;
+package com.taehee.bot.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

@@ -1,4 +1,4 @@
-package com.example.bot;
+package com.taehee.bot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

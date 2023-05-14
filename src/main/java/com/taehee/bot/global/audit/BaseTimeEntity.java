@@ -1,4 +1,4 @@
-package com.example.bot.global.audit;
+package com.taehee.bot.global.audit;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
