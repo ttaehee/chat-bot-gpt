@@ -1,11 +1,14 @@
 package com.taehee.bot.domain.member.model;
 
+import com.taehee.bot.domain.question.model.Category;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +27,11 @@ public class Member {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String sendTime;
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
-    protected Member(String email, String sendTime) {
+    public Member(String email, Category category) {
         this.email = email;
-        this.sendTime = sendTime;
+        this.category = category;
     }
 }
