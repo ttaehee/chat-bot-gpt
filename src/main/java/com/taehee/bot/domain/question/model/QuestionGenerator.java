@@ -1,7 +1,7 @@
 package com.taehee.bot.domain.question.model;
 
-import java.util.List;
+import com.taehee.bot.domain.question.dto.response.SendQuestionResponse;
 
 public interface QuestionGenerator {
-    List<String> generate(String categoryName);
+    SendQuestionResponse generate(String categoryName);
 }

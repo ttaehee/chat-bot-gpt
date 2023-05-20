@@ -1,5 +1,6 @@
-package com.taehee.bot.domain.question.service;
+package com.taehee.bot.domain.question.application;
 
+import com.taehee.bot.domain.question.dto.response.SendQuestionResponse;
 import com.taehee.bot.domain.question.model.Category;
 import com.taehee.bot.domain.question.model.QuestionGenerator;
 import com.taehee.bot.global.config.OpenFeignClientConfig;
@@ -10,7 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.taehee.bot.domain.question.dto.response.SendQuestionResponse.toSendQuestionResponse;
 
 @Component
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class OpenAiQuestionGenerator implements QuestionGenerator {
     private final OpenFeignClientConfig openFeignClientConfig;
 
     @Override
-    public List<String> generate(String categoryName) {
+    public SendQuestionResponse generate(String categoryName) {
         OpenAiRequest openAiRequest = new OpenAiRequest(
                 openFeignClientConfig.getModel(),
                 List.of(new OpenAiRequest.Message(openFeignClientConfig.getRole(), Category.of(categoryName)))
@@ -28,9 +30,6 @@ public class OpenAiQuestionGenerator implements QuestionGenerator {
 
         OpenAiResponse openAiResponse = openAiChatClient.call(openAiRequest);
 
-        //TODO dto로 변환하기 고려
-        return openAiResponse.choices().stream()
-                .map(choice -> choice.message().content())
-                .collect(Collectors.toList());
+        return toSendQuestionResponse(openAiResponse);
     }
 }
