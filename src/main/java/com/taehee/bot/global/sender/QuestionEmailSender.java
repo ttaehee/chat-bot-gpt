@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
@@ -23,6 +24,7 @@ public class QuestionEmailSender implements QuestionSender {
 
     private final JavaMailSender javaMailSender;
 
+    @Async
     @Override
     public void send(String toAddress, String contents) {
         try {
