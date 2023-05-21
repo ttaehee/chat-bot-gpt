@@ -22,7 +22,7 @@ public class QuestionService {
     @Transactional
     public void sendQuestion() {
         List<Member> members = memberRepository.findAll();
-        members.forEach(
+        members.parallelStream().forEach(
                 member -> generateAndSend(member.getCategory().name(), member.getEmail())
         );
     }
